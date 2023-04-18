@@ -5,8 +5,9 @@ using System;
 
 public class bitmap : MonoBehaviour
 {
-    public GameObject cube;
+    public GameObject wallObject;
     public TextAsset imageAsset;
+    public float scale = 1f;
 
     public void Start()
     {
@@ -23,7 +24,7 @@ public class bitmap : MonoBehaviour
                 var b = Math.Abs(pixel.b - white.b);
 
                 if (r + g + b > 0.5){
-                    Instantiate(cube, new Vector3(x, 5, z), Quaternion.identity, this.transform);
+                    Instantiate(wallObject, new Vector3(x, 5, z), Quaternion.identity, this.transform);
                 }
             }
         }
@@ -49,7 +50,12 @@ public class bitmap : MonoBehaviour
         for (int i = 0; i < transform.childCount; i++){
             Destroy(transform.GetChild(i).gameObject);
 
-        }
+        }        
     }
 
+    public void Update(){
+        GameObject walls = GameObject.Find("wall-generator");
+
+        walls.transform.localScale = new Vector3(scale, scale, scale);
+    }
 }
