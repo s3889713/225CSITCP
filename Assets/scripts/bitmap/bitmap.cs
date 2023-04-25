@@ -2,21 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using Microsoft.MixedReality.Toolkit.UI;
+using Microsoft.MixedReality.Toolkit.Input;
 
 public class bitmap : MonoBehaviour
 {
     public GameObject wallObject;
+    public GameObject empty;
     public TextAsset imageAsset;
-    public float scale = 1f;
+    public float scale = 0.01f;
 
     public void Start()
     {
-        Texture2D tex = new Texture2D(2, 2);
-        ImageConversion.LoadImage(tex, imageAsset.bytes);
+        Texture2D bitmap = new Texture2D(2, 2);
+        ImageConversion.LoadImage(bitmap, imageAsset.bytes);
         
-        for(int x = 0; x < tex.width; x++){
-            for(int z = 0; z < tex.height; z++){
-                Color pixel = tex.GetPixel(x, z);
+        for(int x = 0; x < bitmap.width; x++){
+            for(int z = 0; z < bitmap.height; z++){
+                Color pixel = bitmap.GetPixel(x, z);
 
                 Color white = Color.white;
                 var r = Math.Abs(pixel.r - white.r);
@@ -31,26 +34,45 @@ public class bitmap : MonoBehaviour
 
         MeshFilter[] filter = GetComponentsInChildren<MeshFilter>();
 
-        Mesh final = new Mesh();
-        final.indexFormat = UnityEngine.Rendering.IndexFormat.UInt32;
+        Mesh finalFilter = new Mesh();
+        finalFilter.indexFormat = UnityEngine.Rendering.IndexFormat.UInt32;
 
         CombineInstance[] combine = new CombineInstance[filter.Length];
 
-        for (int i = 1; i <filter.Length; i++){
+        for (int i = 2; i <filter.Length; i++){
             combine[i].subMeshIndex = 0;
             combine[i].mesh = filter[i].sharedMesh;
             combine[i].transform = filter[i].transform.localToWorldMatrix;
 
         }
 
-        final.CombineMeshes(combine);
+        finalFilter.CombineMeshes(combine);
 
-        GetComponent<MeshFilter>().sharedMesh = final;
-
-        for (int i = 0; i < transform.childCount; i++){
+        for (int i = 1; i < transform.childCount; i++){
             Destroy(transform.GetChild(i).gameObject);
+        }
 
-        }        
+        GetComponent<MeshFilter>().sharedMesh = finalFilter;
+
+        var inner = Instantiate(empty, new Vector3(0,0,0), Quaternion.identity, this.transform);
+        int layer = LayerMask.NameToLayer("Interior");
+        inner.layer = layer;
+        var innerMesh = inner.AddComponent<MeshFilter>();
+        inner.AddComponent<MeshRenderer>();
+        innerMesh.GetComponent<MeshFilter>().sharedMesh = finalFilter;
+        inner.AddComponent<MeshCollider>();
+
+        innerMesh.GetComponent<MeshFilter>().sharedMesh = null;
+
+        GameObject walls = GameObject.Find("wall-generator");
+
+        walls.transform.localScale = new Vector3(0.01f,0.01f,0.01f);
+
+        var con = walls.AddComponent<MeshCollider>();
+        con.convex = true;
+        System.Threading.Thread.Sleep(1000);
+        walls.AddComponent<NearInteractionGrabbable>();
+        walls.AddComponent<ObjectManipulator>();
     }
 
     public void Update(){
