@@ -11,6 +11,7 @@ public class bitmap : MonoBehaviour
     public GameObject empty;
     public TextAsset imageAsset;
     public float scale = 0.01f;
+    public Material floorMat;
 
     public void Start()
     {
@@ -73,6 +74,16 @@ public class bitmap : MonoBehaviour
         System.Threading.Thread.Sleep(1000);
         walls.AddComponent<NearInteractionGrabbable>();
         walls.AddComponent<ObjectManipulator>();
+
+        var floor = GameObject.CreatePrimitive(PrimitiveType.Plane);
+
+        floor.transform.parent = this.gameObject.transform;
+
+        floor.transform.localScale = new Vector3(bitmap.width/10 + 2, 1f, bitmap.height/10 + 1);
+        floor.transform.position = new Vector3(bitmap.width/200f, -0.5f, bitmap.height/200f);
+        var floorMesh = floor.GetComponent<MeshRenderer>();
+        floorMesh.material = floorMat;
+        floor.layer = layer;
     }
 
     public void Update(){

@@ -1792,6 +1792,10 @@ PrefabInstance:
       value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 5972447092174785824, guid: c264959ee051a204691861e2d2f092ec, type: 3}
+      propertyPath: floorMat
+      value: 
+      objectReference: {fileID: 2100000, guid: 340cb672d48d88844a47079211991281, type: 2}
+    - target: {fileID: 5972447092174785824, guid: c264959ee051a204691861e2d2f092ec, type: 3}
       propertyPath: wallObject
       value: 
       objectReference: {fileID: 5397189926538088437, guid: b7fedf9d496c37f4ebb097a98982115b, type: 3}
@@ -3071,7 +3075,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83d9acc7968244a8886f3af591305bcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeProfile: {fileID: 11400000, guid: 31a611a779d3499e8e35f1a2018ca841, type: 2}
+  activeProfile: {fileID: 11400000, guid: e44045fc5c98db94a9e65997463f0769, type: 2}
 --- !u!4 &1031242614
 Transform:
   m_ObjectHideFlags: 0
@@ -3433,12 +3437,12 @@ GameObject:
   - component: {fileID: 1091079455}
   - component: {fileID: 1091079454}
   - component: {fileID: 1091079453}
-  - component: {fileID: 1091079452}
   - component: {fileID: 1091079451}
   - component: {fileID: 1091079450}
   - component: {fileID: 1091079449}
   - component: {fileID: 1091079448}
   - component: {fileID: 1091079456}
+  - component: {fileID: 1091079452}
   m_Layer: 7
   m_Name: Cube
   m_TagString: Player
@@ -3498,8 +3502,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.5
---- !u!65 &1091079452
-BoxCollider:
+--- !u!135 &1091079452
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -3507,10 +3511,10 @@ BoxCollider:
   m_GameObject: {fileID: 1091079447}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0.000000059604645, z: 0}
 --- !u!23 &1091079453
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3568,7 +3572,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1091079447}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 10, y: 5, z: 10}
+  m_LocalPosition: {x: 10, y: 1, z: 10}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children: []
   m_Father: {fileID: 19684420}
@@ -3589,7 +3593,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 3
 --- !u!1 &1150031151
 GameObject:
   m_ObjectHideFlags: 0
@@ -6437,6 +6441,49 @@ Transform:
   - {fileID: 1889068836}
   m_Father: {fileID: 1196426185}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1391078431
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1391078433}
+  - component: {fileID: 1391078432}
+  m_Layer: 0
+  m_Name: Oculus
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1391078432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1391078431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22811c8fb35efbb4495cbac3231593aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1391078433
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1391078431}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.9982624, y: 1.5645404, z: 2.1545124}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1396719832
 GameObject:
