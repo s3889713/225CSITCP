@@ -4,6 +4,7 @@ using UnityEngine;
 using System;
 using Microsoft.MixedReality.Toolkit.UI;
 using Microsoft.MixedReality.Toolkit.Input;
+using Microsoft.MixedReality.Toolkit.UI.BoundsControl;
 
 public class bitmap : MonoBehaviour
 {
@@ -74,6 +75,7 @@ public class bitmap : MonoBehaviour
         System.Threading.Thread.Sleep(1000);
         walls.AddComponent<NearInteractionGrabbable>();
         walls.AddComponent<ObjectManipulator>();
+        walls.AddComponent<BoundsControl>();
 
         var floor = GameObject.CreatePrimitive(PrimitiveType.Plane);
 
@@ -87,8 +89,8 @@ public class bitmap : MonoBehaviour
     }
 
     public void Update(){
-        GameObject walls = GameObject.Find("wall-generator");
+        // GameObject walls = GameObject.Find("wall-generator");
 
-        walls.transform.localScale = new Vector3(scale, scale, scale);
+        // walls.transform.localScale = new Vector3(scale, scale, scale);
     }
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class oculusSetup : MonoBehaviour
 {
+    public float opacity = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,7 +19,7 @@ public class oculusSetup : MonoBehaviour
             var manager = mrp.AddComponent<OVRManager>();
 
             manager.isInsightPassthroughEnabled = true;
-            passthoughLayer.textureOpacity = 0.3f;
+            passthoughLayer.textureOpacity = opacity;
         #endif
     }
 

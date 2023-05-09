@@ -6,8 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/JH-Robosim.unity
+    path: Assets/JH-Robosim.unity
     guid: d2f159a970e70304da3d1043fe370a7e
   m_configObjects:
-    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 59219fcf9bc105f4f972d25a9f1bccf9, type: 2}
-    com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 7be00fdb5cba76a4bb3e1261afdea254, type: 2}
+    Unity.XR.WindowsMR.Settings: {fileID: 11400000, guid: d659cefbedde4084d801e73fe3034dca, type: 2}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 2cdf0b21f27612e4bb528c25eec7bbea, type: 2}
+    com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 4cc6e1aebd3001b4c9611b9fbbb64cb6, type: 2}
