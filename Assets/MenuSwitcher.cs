@@ -14,6 +14,14 @@ public class MenuSwitcher : MonoBehaviour
     private GameObject PauseMenu;
     [SerializeField]
     private GameObject PauseButton;
+    [SerializeField]
+    private GameObject ForwardButton;
+    [SerializeField]
+    private GameObject MoveLeftButton;
+    [SerializeField]
+    private GameObject MoveRightButton;
+    [SerializeField]
+    private GameObject MoveDownButton;
 
     public void OnButtonClicked()
     {
@@ -32,6 +40,10 @@ public class MenuSwitcher : MonoBehaviour
     {
         MainMenu.SetActive(false);
         PauseButton.SetActive(true);
+        ForwardButton.SetActive(true);
+        MoveLeftButton.SetActive(true);
+        MoveDownButton.SetActive(true);
+        MoveRightButton.SetActive(true);
     }
 
     public void Quit()
@@ -55,6 +67,10 @@ public class MenuSwitcher : MonoBehaviour
     {
         PauseMenu.SetActive(false);
         PauseButton.SetActive(true);
+        ForwardButton.SetActive(true);
+        MoveLeftButton.SetActive(true);
+        MoveDownButton.SetActive(true);
+        MoveRightButton.SetActive(true);
     }
 
     public void PauseToMain()
@@ -67,5 +83,9 @@ public class MenuSwitcher : MonoBehaviour
     {
         PauseButton.SetActive(false);
         PauseMenu.SetActive(true);
+        ForwardButton.SetActive(false);
+        MoveLeftButton.SetActive(false);
+        MoveDownButton.SetActive(false);
+        MoveRightButton.SetActive(false);
     }
 }
